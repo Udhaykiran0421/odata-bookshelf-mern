@@ -10,7 +10,7 @@ import { PlusCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 // Mock book data
-const MOCK_BOOKS: Book[] = [
+let MOCK_BOOKS: Book[] = [
   { id: "1", title: "The Hobbit", author: "J.R.R. Tolkien", genre: "Fantasy", price: 12.99, publishDate: "1937-09-21" },
   { id: "2", title: "1984", author: "George Orwell", genre: "Dystopian", price: 10.99, publishDate: "1949-06-08" },
   { id: "3", title: "To Kill a Mockingbird", author: "Harper Lee", genre: "Fiction", price: 9.99, publishDate: "1960-07-11" },
@@ -106,14 +106,19 @@ const fetchBooks = async (queryString: string = ""): Promise<Book[]> => {
 };
 
 const addBook = async (book: BookFormValues): Promise<Book> => {
-  // This is a mock implementation until we connect to a real backend
-  console.log("Adding book:", book);
-  
-  // Mock successful addition
-  return {
+  // Create a new book with an ID
+  const newBook = {
     id: Math.random().toString(36).substr(2, 9),
     ...book
   };
+  
+  // Add the new book to the mock books array
+  MOCK_BOOKS = [...MOCK_BOOKS, newBook];
+  
+  console.log("Adding book:", newBook);
+  console.log("Updated books list:", MOCK_BOOKS);
+  
+  return newBook;
 };
 
 const Index = () => {
