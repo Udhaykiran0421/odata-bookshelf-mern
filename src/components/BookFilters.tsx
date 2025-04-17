@@ -144,7 +144,7 @@ const BookFilters = ({ onFilterChange }: BookFiltersProps) => {
                 <SelectValue placeholder="Select genre" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Genres</SelectItem>
+                <SelectItem value="all-genres">All Genres</SelectItem>
                 <SelectItem value="Fantasy">Fantasy</SelectItem>
                 <SelectItem value="Science Fiction">Science Fiction</SelectItem>
                 <SelectItem value="Romance">Romance</SelectItem>
