@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -41,7 +40,8 @@ const BookFilters = ({ onFilterChange }: BookFiltersProps) => {
       filterConditions.push(`contains(author,'${filters.author}')`);
     }
     
-    if (filters.genre) {
+    // Only add genre filter if it's not the "all-genres" placeholder
+    if (filters.genre && filters.genre !== "all-genres") {
       filterConditions.push(`genre eq '${filters.genre}'`);
     }
     
@@ -137,7 +137,7 @@ const BookFilters = ({ onFilterChange }: BookFiltersProps) => {
           <div>
             <label className="text-sm font-medium mb-1 block">Genre</label>
             <Select
-              value={filters.genre || ""}
+              value={filters.genre || "all-genres"}
               onValueChange={(value) => handleFilterChange("genre", value)}
             >
               <SelectTrigger>
